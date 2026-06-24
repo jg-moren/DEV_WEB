@@ -1,0 +1,35 @@
+version: '3.8'
+
+services:
+  # Servidor Web (Apache + PHP) - O equivalente ao Apache do XAMPP
+  web:
+    image: php:8.2-apache
+    container_name: xampp_web
+    ports:
+      - "80:80"
+    volumes:
+      - ./www:/var/www/html
+    networks:
+      - xampp-network
+
+  # Banco de Dados (MySQL) - O equivalente ao MySQL do XAMPP
+  db:
+    image: mysql:8.0
+    container_name: xampp_db
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: copa_db
+    volumes:
+      - db_data:/var/lib/mysql
+    networks:
+      - xampp-network
+
+# Configurações adicionais de volumes e redes
+volumes:
+  db_data:
+
+networks:
+  xampp-network:
+    driver: bridge
