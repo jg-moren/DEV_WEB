@@ -1,3 +1,13 @@
+<?php
+session_start();
+
+// Barreira de segurança: se não tem sessão, expulsa pro login
+if (!isset($_SESSION['usuario_id'])) {
+    header("Location: index.php");
+    exit;
+}
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>

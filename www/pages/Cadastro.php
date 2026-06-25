@@ -10,20 +10,20 @@
 </head>
 <body>
     <div class="prin">
-        <form method="post" id="idform">
+        <form method="post" action="../service/singup.php" id="idform">
             <fieldset>
                 <legend class="Ti">Crie sua conta</legend>
                 <div class="mb-3 tamcaixa">
                     <label for="nome" class="form-label">Nome</label>
-                    <input required type="text" class="form-control" id="nome" placeholder="Digite o nome para seu perfil">
+                    <input required type="text" name="nome" class="form-control" id="nome" placeholder="Digite o nome para seu perfil">
                 </div>
                 <div class="mb-3 tamcaixa">
                     <label for="em" class="form-label">E-mail</label>
-                    <input required type="email" class="form-control" id="em" placeholder="Digite seu e-mail para cadastro">
+                    <input required type="email" name="email" class="form-control" id="em" placeholder="Digite seu e-mail para cadastro">
                 </div>
                 <div class="mb-3 tamcaixa">
                     <label for="se" class="form-label">Senha</label>
-                    <input required type="password" id="se" class="form-control" placeholder= "Digite a sua senha">
+                    <input required type="password" name= "senha" id="se" class="form-control" placeholder= "Digite a sua senha">
                 </div>
                 <div class="mb-3 tamcaixa">
                     <label for="se2" class="form-label">Confirmar senha</label>

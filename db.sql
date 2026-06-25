@@ -9,9 +9,7 @@ USE copa_db;
 -- 2. LIMPEZA DE TABELAS (Opcional - útil para quando reiniciar o contêiner)
 SET FOREIGN_KEY_CHECKS = 0;
 DROP TABLE IF EXISTS usuarios;
-DROP TABLE IF EXISTS campeonato;
 DROP TABLE IF EXISTS jogo;
-DROP TABLE IF EXISTS selecao;
 DROP TABLE IF EXISTS bolao;
 SET FOREIGN_KEY_CHECKS = 1;
 
@@ -24,14 +22,12 @@ CREATE TABLE usuarios (
     adm BOOLEAN NOT NULL
 ) ENGINE=InnoDB;
 
-
-
 CREATE TABLE jogo (
     id INT AUTO_INCREMENT PRIMARY KEY,
     selecao1 VARCHAR(100) NOT NULL,
     selecao2 VARCHAR(100) NOT NULL,
     resultado_selecao1 INT,
-    resultado_selecao2 INT,
+    resultado_selecao2 INT
 ) ENGINE=InnoDB;
 
 CREATE TABLE bolao (
@@ -43,10 +39,13 @@ CREATE TABLE bolao (
     CONSTRAINT fk_jogo FOREIGN KEY (jogo) 
         REFERENCES jogo(id) ON DELETE CASCADE,
     CONSTRAINT fk_usuario FOREIGN KEY (usuario) 
-        REFERENCES selecao(id) ON DELETE CASCADE
+        REFERENCES usuarios(id) ON DELETE CASCADE
 ) ENGINE=InnoDB;
 
 -- 4. INSERÇÃO DE DADOS INICIAIS
-INSERT INTO usuarios (nome, senha, adm) VALUES 
-('Administrador', '12345678', 1),
-('João Silva', 'user_2026', 0);
+INSERT INTO usuarios (nome, senha, email, adm) VALUES 
+('Administrador', '12345678', 'adm@gmail.com', 1),
+('João Silva', 'user_2026', 'joao@gmail.com', 0);
+
+INSERT INTO jogo (selecao1, selecao2) VALUES 
+('Haiti', 'Portugal');

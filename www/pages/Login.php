@@ -1,3 +1,11 @@
+<?php
+if (isset($_SESSION['usuario_id'])) {
+    if($_SESSION['adm'] == 1) header("Location: pages/ADMPage.php");
+    else header("Location: pages/BolãodaCopa.php");
+    exit;
+}
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -23,13 +31,13 @@
         </p>
     </div>
     <div class="container">
-        <form method="post" action="pages/BolãodaCopa.php">
+        <form method="post" action="service/login.php">
             <fieldset>
                 <legend class="te">Entre na disputa</legend>
                 <div class="mb-3 tamcaixa">
-                    <label for="n" class="te form-label">Nome</label>
+                    <label for="n" class="te form-label">Email</label>
                     <br>
-                    <input required type="text" id="n" class="form-control" name="name" placeholder="Digite seu nome">
+                    <input required type="email" id="n" class="form-control" name="email" placeholder="Digite seu email">
                     <br>
                 </div>
                 <div class="mb-3 tamcaixa">
