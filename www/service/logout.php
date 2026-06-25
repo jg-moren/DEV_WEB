@@ -5,6 +5,6 @@ session_start();
 session_destroy();
 
 // Redireciona de volta para a tela de login
-header("Location: index.php");
+header("Location: ../index.php");
 exit;
 ?>

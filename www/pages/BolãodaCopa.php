@@ -29,7 +29,7 @@ if (!isset($_SESSION['usuario_id'])) {
         <div id="user"> <!--Adicionar no usuário e senha para exibir o nome e email do usuário-->
             <p class="t" id="u">Usuário: </p>
             <p class="t" id="e">Email: </p>
-            <a href="Login.html" class="sair"><p>Logout </p></a>
+            <a href="../service/logout.php" class="sair"><p>Logout </p></a>
         </div>
     </div>
     <div class="Corp">
@@ -81,6 +81,6 @@ if (!isset($_SESSION['usuario_id'])) {
     </div>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.min.js" integrity="sha384-G/EV+4j2dNv+tEPo3++6LCgdCROaejBqfUeNjuKAiuXbjrxilcCdDz6ZAVfHWe1Y" crossorigin="anonymous"></script>
-    <script type="text/javascript" src="javahome.js"></script>
+    <script type="text/javascript" src="../script/javahome.js"></script>
 </body>
 </html>
