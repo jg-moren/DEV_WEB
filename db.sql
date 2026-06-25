@@ -19,33 +19,19 @@ SET FOREIGN_KEY_CHECKS = 1;
 CREATE TABLE usuarios (
     id INT AUTO_INCREMENT PRIMARY KEY,
     nome VARCHAR(100) NOT NULL,
+    email VARCHAR(100) NOT NULL,
     senha VARCHAR(255) NOT NULL,
     adm BOOLEAN NOT NULL
 ) ENGINE=InnoDB;
 
-CREATE TABLE campeonato (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    nome VARCHAR(50) NOT NULL UNIQUE
-) ENGINE=InnoDB;
 
-CREATE TABLE selecao (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    nome VARCHAR(50) NOT NULL UNIQUE
-) ENGINE=InnoDB;
 
 CREATE TABLE jogo (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    campeonato INT NOT NULL,
-    selecao1 INT NOT NULL,
-    selecao2 INT NOT NULL,
+    selecao1 VARCHAR(100) NOT NULL,
+    selecao2 VARCHAR(100) NOT NULL,
     resultado_selecao1 INT,
     resultado_selecao2 INT,
-    CONSTRAINT fk_campeonato FOREIGN KEY (campeonato) 
-        REFERENCES campeonato(id) ON DELETE CASCADE,
-    CONSTRAINT fk_selecao1 FOREIGN KEY (selecao1) 
-        REFERENCES selecao(id) ON DELETE RESTRICT,
-    CONSTRAINT fk_selecao2 FOREIGN KEY (selecao2) 
-        REFERENCES selecao(id) ON DELETE RESTRICT
 ) ENGINE=InnoDB;
 
 CREATE TABLE bolao (

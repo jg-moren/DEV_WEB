@@ -1,0 +1,33 @@
+body {
+    background: linear-gradient(135deg, #334838, #c3ddf7,rgb(255, 255, 255),rgb(255, 255, 255),#e9a8a2,#334838)
+}
+
+fieldset {
+    color: white;
+    border-radius: 30px;
+    background-color: rgba(7, 2, 40, 0.5);
+    width: 450px;
+    box-shadow: 0px 10px 30px rgb(248, 252, 248);
+}
+
+.prin{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    padding: 30px;
+}
+
+
+.Ti{
+    padding-top:20px;
+    padding-bottom:30px;
+    font-family:'Oswald',sans-serif;
+    font-size:35px;
+    text-align: center;
+}
+
+.tamcaixa{
+    width:300px;
+    margin:auto;
+}

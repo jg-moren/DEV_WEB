@@ -1,0 +1,167 @@
+body {
+    background: linear-gradient(to right, #5e2d2a,#206232,#1a542a, #113860)
+}
+
+.Cabe{
+    border-color: beige;
+    height: auto;
+    width: 100%;
+    display: flex;
+
+}
+
+#foto{
+    width: 400px;
+    height: 180px;
+    background: linear-gradient(to right, #280b09, #300d0b);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#tit{
+    width: 1200px;
+    height: 180px;
+    background: linear-gradient(to right, #102d15, #0b3512);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#user{
+    width: 400px;
+    height: 180px;
+    background: linear-gradient(to right, #14293a, #0b2e47);
+    display: flex;
+    padding-left: 15px;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#user p.t{
+    color:aliceblue;
+    font-weight:bold;
+    font-family:'Poppins',sans-serif;
+    font-size: 20px;
+}
+.botuser{
+    display:flex;
+    gap:30px;
+}
+
+#user a.sair{
+    color:aliceblue;
+    font-weight:bold;
+    font-family:'Poppins',sans-serif;
+    font-size: 20px;
+    text-decoration: none;
+}
+
+#foto img{
+    width:90px;
+    filter: drop-shadow(0px 0px 10px rgb(255, 255, 255));
+}
+
+#user a.sair:hover{
+    color:#2cd95a;
+}
+
+#user a.sair#log:hover{
+    color:#d9522c;
+}
+
+.font{
+    font-family:'Poppins',sans-serif;
+    font-size: 45px;
+    color:white;
+    text-shadow:3px 3px 10px #14632e;
+    margin:0;
+}
+
+
+.Corp{
+    width:100%;
+    min-height:500px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.area-form{
+    display:flex;
+    gap:50px;
+}
+
+#formCriar,#formAtualizar{
+    width:350px;
+}
+
+fieldset{
+    height:100%;
+    border-radius:40px;
+}
+
+fieldset.criativo{
+    border:10px solid #0b2013;
+    background: #326d78;
+    background: radial-gradient(circle, rgba(50, 109, 120, 1) 0%, rgba(171, 34, 46, 1) 50%, rgba(40, 120, 45, 1) 100%);
+}
+
+fieldset.atualização{
+    border:10px solid #330a0a;
+    background: #46db69;
+    background: radial-gradient(circle,rgb(29, 119, 50) 0%, rgb(25, 46, 104) 50%, rgba(107, 15, 15, 1) 100%);
+}
+
+.Ti{
+    padding-top:20px;
+    padding-bottom:30px;
+    font-family:'Oswald',sans-serif;
+    font-size:35px;
+    text-align:center;
+    color:white;
+
+}
+
+.tamcaixa{
+    width:280px;
+    margin:auto;
+    text-align:center;
+    font-weight:bold;
+
+}
+
+.placar{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:15px;
+    margin:30px;
+}
+
+.placar input{
+    width:60px;
+}
+
+.botao{
+    text-align:center;
+}
+
+.Rank{
+    width:100%;
+    min-height:180px;
+    background: rgba(7, 21, 35, 0.8);
+    padding:30px;
+    font-family:'Poppins',sans-serif;
+    color:white;
+    text-align:center;
+    display:flex;
+    justify-content:space-around;
+    align-items:center;
+
+}
+
+.erros,.ranking,.acertos{
+    width:30%;
+    padding:20px;
+}

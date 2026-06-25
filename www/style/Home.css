@@ -1,0 +1,123 @@
+body {
+    background: linear-gradient(to right, #7a1810,#2cd95a,#2cd95a, #215c98)
+}
+
+.Cabe{
+    border-color: beige;
+    height: auto;
+    width: 100%;
+    display: flex;
+
+}
+
+#foto{
+    width: 400px;
+    height: 180px;
+    background: linear-gradient(to right, #68110d, #ad1d15);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#tit{
+    width: 1200px;
+    height: 180px;
+    background: linear-gradient(to right, #0d681c, #15ad2e);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#user{
+    width: 400px;
+    height: 180px;
+    background: linear-gradient(to right, #0d3f68, #156ead);
+    display: flex;
+    padding-left: 15px;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#user p.t{
+    margin: 0;
+    color:aliceblue;
+    font-family:'Poppins',sans-serif;
+    font-size: 20px;
+}
+
+#user a.sair{
+    color:aliceblue;
+    font-family:'Poppins',sans-serif;
+    font-size: 20px;
+    text-decoration: none;
+}
+
+#user a.sair:hover{
+    color:#c93b13;
+}
+
+#foto img{
+    width:90px;
+    filter: drop-shadow(0px 0px 10px rgb(255, 255, 255));
+}
+
+.font{
+    font-family:'Poppins',sans-serif;
+    font-size: 45px;
+    color:white;
+    text-shadow:3px 3px 10px #215c98;
+    margin:0;
+}
+
+
+.Corp{
+    width:100%;
+    min-height:500px;
+    background:rgba(255,255,255,.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+} 
+
+#idform{
+    padding: 30px;
+    border:10px solid #ffffff;
+    border-radius: 5px;
+    background: linear-gradient(to right, #ad1d15,#15ad2e, #156ead)
+}
+
+.Ti{
+    padding-top:20px;
+    padding-bottom:30px;
+    font-family:'Oswald',sans-serif;
+    font-size:35px;
+    font-weight:bold;
+    text-align:center;
+    color: white;
+}
+
+.tamcaixa{
+    width:300px;
+    text-align: center;
+    font-weight:bold;
+
+}
+
+.Rank{
+    width:100%;
+    min-height:180px;
+    background: rgba(33,92,152,.4);
+    padding:30px;
+    font-family:'Poppins',sans-serif;
+    color:white;
+    text-align:center;
+    display:flex;
+    justify-content:space-around;
+    align-items:center;
+
+}
+
+.erros,.ranking,.acertos{
+    width:30%;
+    padding:20px;
+}
