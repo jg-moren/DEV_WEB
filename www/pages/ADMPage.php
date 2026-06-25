@@ -3,7 +3,15 @@ session_start();
 
 // Barreira de segurança: se não tem sessão, expulsa pro login
 if (!isset($_SESSION['usuario_id'])) {
-    header("Location: index.php");
+    header("Location: ../index.php");
+    exit;
+}
+// Se o usuário já estiver logado, joga ele para a página correta
+if (isset($_SESSION['usuario_id'])) {
+    // Adicionado um isset() por segurança para evitar erros caso 'adm' não exista
+    if (isset($_SESSION['adm']) && $_SESSION['adm'] != 1) {
+        header("Location: ../pages/BolãodaCopa.php");
+    }
     exit;
 }
 ?>
@@ -29,8 +37,8 @@ if (!isset($_SESSION['usuario_id'])) {
         <div id="user"> <!--Adicionar no usuário e senha para exibir o nome e email do usuário-->
             <p class="t" id="uadm">Usuário: </p>
             <div class="botuser">
-                <a href="pages/BolãodaCopa.html" class="sair">Pagina principal</a>
-                <a href="pages/LoginADM.html" class="sair" id="log">Logout</a>
+                <a href="BolãodaCopa.php" class="sair">Pagina principal</a>
+                <a href="../service/logout.php" class="sair" id="log">Logout</a>
             </div>
         </div>
     </div>

@@ -7,7 +7,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $senha = trim($_POST['senha']);
 
     // Busca o usuário pelo email
-    $consulta = $pdo->prepare("SELECT id, nome, senha, adm FROM usuarios WHERE email = :email");
+    $consulta = $pdo->prepare("SELECT id, nome, email, senha, adm FROM usuarios WHERE email = :email");
     $consulta->execute(['email' => $email]);
     $usuario = $consulta->fetch(PDO::FETCH_ASSOC);
 
@@ -17,6 +17,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         // Deu certo! Salva os dados na sessão
         $_SESSION['usuario_id'] = $usuario['id'];
         $_SESSION['nome'] = $usuario['nome'];
+        $_SESSION['email'] = $usuario['email'];
         $_SESSION['adm'] = $usuario['adm'];
         
         header("Location: ../pages/BolãodaCopa.php"); // Vai para a área restrita

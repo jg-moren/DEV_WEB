@@ -3,7 +3,7 @@ session_start();
 
 // Barreira de segurança: se não tem sessão, expulsa pro login
 if (!isset($_SESSION['usuario_id'])) {
-    header("Location: index.php");
+    header("Location: ../index.php");
     exit;
 }
 ?>
@@ -27,9 +27,13 @@ if (!isset($_SESSION['usuario_id'])) {
             <p class="font">BOLÃO DA COPA</p>
         </div>
         <div id="user"> <!--Adicionar no usuário e senha para exibir o nome e email do usuário-->
-            <p class="t" id="u">Usuário: </p>
-            <p class="t" id="e">Email: </p>
+            <p class="t" id="u">Usuário: <?php echo htmlspecialchars($_SESSION['nome']); ?></p>
+            <p class="t" id="e">Email: <?php echo htmlspecialchars($_SESSION['email']); ?></p>
+            <?php if (isset($_SESSION['adm']) && $_SESSION['adm'] == 1): ?>
+                <a href="ADMPage.php" class="sair">Pagina ADM</a>
+            <?php endif; ?>
             <a href="../service/logout.php" class="sair"><p>Logout </p></a>
+            
         </div>
     </div>
     <div class="Corp">
