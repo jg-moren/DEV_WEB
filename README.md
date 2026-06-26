@@ -1,7 +1,9 @@
 
 # Bolão da Copa 2026 🏆
 
-Sistema web de gerenciamento e palpites para a Copa do Mundo de 2026. Desenvolvido em PHP e MySQL, rodando de forma isolada em contêineres Docker.
+**🌍 Acesso ao site ao vivo:** [https://copa.nfy.fyi](https://copa.nfy.fyi)
+
+Sistema web de gerenciamento e palpites para a Copa do Mundo de 2026. Desenvolvido em PHP e MySQL, com suporte a deploy em hospedagem em nuvem (InfinityFree) e ambiente de desenvolvimento local isolado em contêineres Docker.
 
 ## 🚀 Funcionalidades
 
@@ -16,11 +18,11 @@ Sistema web de gerenciamento e palpites para a Copa do Mundo de 2026. Desenvolvi
 * **Backend:** PHP (Sessões seguras, PDO para conexão com o banco).
 * **Banco de Dados:** MySQL (Consultas parametrizadas prevenindo SQL Injection, uso de `INNER JOIN`).
 * **Frontend:** HTML5, CSS3, JavaScript e Bootstrap 5.3.
-* **Infraestrutura:** Docker e Docker Compose.
+* **Infraestrutura:** Docker e Docker Compose (para ambiente de desenvolvimento).
 
 ---
 
-## ⚙️ Como executar o projeto
+## ⚙️ Como executar o projeto localmente
 
 Certifique-se de ter o Docker e o Docker Compose instalados no seu sistema.
 
@@ -57,7 +59,7 @@ docker exec -it xampp_db mysql -u root -p
 
 ---
 
-## 💻 Gerenciamento do Ambiente (Cheatsheet)
+## 💻 Gerenciamento do Ambiente Local (Cheatsheet)
 
 Sempre que precisar gerenciar o seu ambiente Docker, utilize os comandos abaixo no diretório `~/meu-xampp`:
 
@@ -87,15 +89,14 @@ docker ps
 
 ## 🔌 Dados de Conexão (Para o PHP)
 
-No arquivo `conexao.php`, as credenciais para o PDO se conectarem ao banco de dados rodando no Docker são:
+No arquivo `conexao.php`, as credenciais para o PDO se conectarem ao banco de dados rodando localmente no Docker são:
 
 * **Host:** `db` *(O Docker resolve o nome do serviço para o IP correto automaticamente)*
 * **Banco de Dados:** `meu_sistema` *(Verifique o nome exato usado no seu db.sql)*
 * **Usuário:** `root`
 * **Senha:** `root` *(Definida no docker-compose.yml)*
 
-Exemplo da string de conexão (PDO):
-`$pdo = new PDO("mysql:host=db;dbname=meu_sistema;charset=utf8mb4", "root", "root");`
+*(Nota: Para deploy no InfinityFree, os dados de Host, Banco de Dados, Usuário e Senha devem ser alterados conforme fornecido no painel vPanel da hospedagem).*
 
 ---
 
@@ -112,6 +113,3 @@ Exemplo da string de conexão (PDO):
 
 * **Senhas no Banco:** O sistema exige que a coluna de senha na tabela `usuarios` seja do tipo `VARCHAR(255)` para suportar os hashes longos gerados pelo algoritmo do PHP. Nunca insira senhas em texto puro diretamente no banco.
 * **Administrador:** Para definir um usuário como Administrador, altere a coluna `adm` desse usuário para `1` diretamente no banco de dados. Apenas usuários com esta flag têm acesso à `ADMPage.php`.
-
-
-
