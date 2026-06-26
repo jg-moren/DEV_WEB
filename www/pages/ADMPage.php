@@ -10,10 +10,12 @@ if (!isset($_SESSION['usuario_id'])) {
 if (isset($_SESSION['usuario_id'])) {
     // Adicionado um isset() por segurança para evitar erros caso 'adm' não exista
     if (isset($_SESSION['adm']) && $_SESSION['adm'] != 1) {
-        header("Location: ../pages/BolãodaCopa.php");
+        header("Location: ../index.php");
+        exit;
     }
-    exit;
 }
+
+require_once '../service/jogo.php';
 ?>
 
 <!DOCTYPE html>
@@ -35,7 +37,7 @@ if (isset($_SESSION['usuario_id'])) {
             <p class="font">Área administrativa</p>
         </div>
         <div id="user"> <!--Adicionar no usuário e senha para exibir o nome e email do usuário-->
-            <p class="t" id="uadm">Usuário: </p>
+            <p class="t" id="u">Usuário: <?php echo htmlspecialchars($_SESSION['nome']); ?></p>
             <div class="botuser">
                 <a href="BolãodaCopa.php" class="sair">Pagina principal</a>
                 <a href="../service/logout.php" class="sair" id="log">Logout</a>
@@ -44,40 +46,44 @@ if (isset($_SESSION['usuario_id'])) {
     </div>
     <div class="Corp">
         <div class="area-form">
-            <form id="formCriar" method="post">
+            <form id="formCriar" action="../service/addJogo.php" method="post">
                 <fieldset class="criativo">
                     <legend class="Ti">
                         Criar partida</legend>
                     <div class="mb-3 tamcaixa">
                         <label class="form-label" style="color:white;">Time 1</label>
-                        <input required type="text" class="form-control"placeholder="Nome do primeiro time">
+                        <input required name="selecao1" type="text" class="form-control"placeholder="Nome do primeiro time">
                     </div>
                     <div class="mb-3 tamcaixa">
                         <label class="form-label" style="color:white;">
                             Time 2
                         </label>
-                        <input required type="text" class="form-control"placeholder="Nome do segundo time">
+                        <input required name="selecao2" type="text" class="form-control"placeholder="Nome do segundo time">
                     </div>
                     <div class="mb-3 botao">
                         <button type="submit" class="btn btn-success">Postar</button>
                     </div>
                 </fieldset>
             </form>
-            <form id="formAtualizar" method="post">
+            <form id="formAtualizar" action="../service/updateJogo.php" method="post">
                 <fieldset class="atualização">
                     <legend class="Ti">Atualizar resultado</legend>
                     <div class="mb-3 tamcaixa">
                         <label class="form-label" style="color:white;">Jogos existentes</label>
-                        <select required class="form-select">
+                        <select required name="jogo_id" class="form-select">
                             <option selected disabled>Escolha uma partida</option>
-                            <option>Brasil x Escocia</option>
-                            <option>Uruguai x Cabo Verde</option>
+                            <?php
+                                $lista_jogos = $class_jogos->listar();
+                                foreach ($lista_jogos as $jogo) {
+                            ?>
+                            <option value=<?php echo htmlspecialchars($jogo->id); ?>><?php echo htmlspecialchars($jogo->selecao1); ?> x <?php echo htmlspecialchars($jogo->selecao2); ?></option>
+                            <?php } ?>
                         </select>
                     </div>
                     <div class="placar">
-                        <input type="number" class="form-control text-center" min="0" placeholder="0">
+                        <input required name="resultado_selecao1" type="number" class="form-control text-center" min="0" placeholder="0">
                         <span class="fw-bold text-white">X</span>
-                        <input type="number" class="form-control text-center" min="0" placeholder="0">
+                        <input required name="resultado_selecao2" type="number" class="form-control text-center" min="0" placeholder="0">
                     </div>
                     <div class="mb-3 botao">
                         <button type="submit"class="btn btn-success">Postar</button>
@@ -86,24 +92,64 @@ if (isset($_SESSION['usuario_id'])) {
             </form>
         </div>
     </div>
-    <div class="Rank">
-        <div class="erros">
-            <h3>PARTIDAS</h3>
-            <div id="listapartidas">
-                <p>teste</p>
-                <!--Atualizar aqui a lista de erros-->
-            </div>
-        </div>
-        <div class="ranking">
-            <h3>RANKING PALPITEIRO</h3>
-            <div id="listarank">
-                <p>teste</p>
-                <!--Atualizar aqui o ranking-->
-            </div>
-        </div>
-    </div>
+    
+<div id="listapartidas" class="mt-4">
+    <h2 class="text-white fw-bold mb-4">Gerenciar Partidas</h2>
+
+    <?php 
+    // Chama a sua função listar que traz todos os jogos
+    $listaDeJogos = $class_jogos->listar(); 
+    
+    if (empty($listaDeJogos)): 
+    ?>
+        <p class="text-white fs-4">Nenhuma partida cadastrada.</p>
+    <?php else: ?>
+        
+        <table class="table text-white mt-3 fs-5">
+            <thead class="border-bottom border-light fs-4">
+                <tr>
+                    <th class="bg-transparent text-white">Partida</th>
+                    <th class="text-center bg-transparent text-white">Placar Real</th>
+                    <th class="text-center bg-transparent text-white">Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php foreach ($listaDeJogos as $jogo): ?>
+                    <tr class="border-bottom border-secondary">
+                        
+                        <td class="align-middle bg-transparent text-white fw-bold">
+                            <?php echo htmlspecialchars($jogo->selecao1 . " X " . $jogo->selecao2); ?>
+                        </td>
+                        
+                        <td class="text-center align-middle bg-transparent text-white">
+                            <?php 
+                            if ($jogo->resultado_selecao1 !== null) {
+                                echo htmlspecialchars($jogo->resultado_selecao1 . " - " . $jogo->resultado_selecao2);
+                            } else {
+                                // Badge um pouco maior também (fs-6)
+                                echo "<span class='badge bg-secondary fs-6'>Sem resultado</span>";
+                            }
+                            ?>
+                        </td>
+                        
+                        <td class="text-center align-middle bg-transparent text-white">
+                            
+                            <form method="POST" action="../service/deleta_jogo.php" onsubmit="return confirm('ATENÇÃO: Tem certeza que deseja apagar o jogo <?php echo htmlspecialchars($jogo->selecao1 . " X " . $jogo->selecao2); ?>? Isso não pode ser desfeito!');">
+                                
+                                <input type="hidden" name="id_jogo" value="<?php echo htmlspecialchars($jogo->id); ?>">
+                                
+                                <button type="submit" class="btn btn-danger btn-lg fw-bold shadow-sm">Apagar</button>
+                            </form>
+                            
+                        </td>
+                    </tr>
+                <?php endforeach; ?>
+            </tbody>
+        </table>
+
+    <?php endif; ?>
+</div>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.min.js" integrity="sha384-G/EV+4j2dNv+tEPo3++6LCgdCROaejBqfUeNjuKAiuXbjrxilcCdDz6ZAVfHWe1Y" crossorigin="anonymous"></script>
-    <script type="text/javascript" src="../script/javaadm.js"></script>
 </body>
 </html>

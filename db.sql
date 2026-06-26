@@ -44,8 +44,8 @@ CREATE TABLE bolao (
 
 -- 4. INSERÇÃO DE DADOS INICIAIS
 INSERT INTO usuarios (nome, senha, email, adm) VALUES 
-('Administrador', '12345678', 'adm@gmail.com', 1),
-('João Silva', 'user_2026', 'joao@gmail.com', 0);
+('Administrador', '$2y$10$08k5Gs9d5GbMN1kEoYWUkOcdDsvRyR6nQKqerJoyEK6njTqX0Qyw2', 'adm@gmail.com', 1),
+('João Silva', '$2y$10$08k5Gs9d5GbMN1kEoYWUkOcdDsvRyR6nQKqerJoyEK6njTqX0Qyw2', 'joao@gmail.com', 0);
 
 INSERT INTO jogo (selecao1, selecao2) VALUES 
 ('Haiti', 'Portugal');

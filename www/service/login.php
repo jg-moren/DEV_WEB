@@ -2,6 +2,9 @@
 session_start();
 require 'conexao.php';
 
+
+$pdo = conectar();
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $email = trim($_POST['email']);
     $senha = trim($_POST['senha']);
@@ -12,7 +15,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $usuario = $consulta->fetch(PDO::FETCH_ASSOC);
 
     // Valida se achou o usuário e se a senha criptografada confere
-    if ($usuario && $senha == $usuario['senha']){//password_verify($senha, $usuario['senha'])) {
+    if ($usuario && $senha == password_verify($senha, $usuario['senha'])) {
         
         // Deu certo! Salva os dados na sessão
         $_SESSION['usuario_id'] = $usuario['id'];
