@@ -97,7 +97,6 @@ require_once '../service/jogo.php';
     <h2 class="text-white fw-bold mb-4">Gerenciar Partidas</h2>
 
     <?php 
-    // Chama a sua função listar que traz todos os jogos
     $listaDeJogos = $class_jogos->listar(); 
     
     if (empty($listaDeJogos)): 
@@ -126,7 +125,6 @@ require_once '../service/jogo.php';
                             if ($jogo->resultado_selecao1 !== null) {
                                 echo htmlspecialchars($jogo->resultado_selecao1 . " - " . $jogo->resultado_selecao2);
                             } else {
-                                // Badge um pouco maior também (fs-6)
                                 echo "<span class='badge bg-secondary fs-6'>Sem resultado</span>";
                             }
                             ?>
