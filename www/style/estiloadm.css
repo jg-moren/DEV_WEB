@@ -147,19 +147,6 @@ fieldset.atualização{
     text-align:center;
 }
 
-.Rank{
-    width:100%;
-    min-height:180px;
-    background: rgba(7, 21, 35, 0.8);
-    padding:30px;
-    font-family:'Poppins',sans-serif;
-    color:white;
-    text-align:center;
-    display:flex;
-    justify-content:space-around;
-    align-items:center;
-
-}
 
 .erros,.ranking,.acertos{
     width:30%;

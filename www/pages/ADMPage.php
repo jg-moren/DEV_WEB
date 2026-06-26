@@ -132,7 +132,7 @@ require_once '../service/jogo.php';
                         
                         <td class="text-center align-middle bg-transparent text-white">
                             
-                            <form method="POST" action="../service/deleta_jogo.php" onsubmit="return confirm('ATENÇÃO: Tem certeza que deseja apagar o jogo <?php echo htmlspecialchars($jogo->selecao1 . " X " . $jogo->selecao2); ?>? Isso não pode ser desfeito!');">
+                            <form method="POST" action="../service/deleteJogo.php" onsubmit="return confirm('ATENÇÃO: Tem certeza que deseja apagar o jogo <?php echo htmlspecialchars($jogo->selecao1 . " X " . $jogo->selecao2); ?>? Isso não pode ser desfeito!');">
                                 
                                 <input type="hidden" name="id_jogo" value="<?php echo htmlspecialchars($jogo->id); ?>">
                                 
